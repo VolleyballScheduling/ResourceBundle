@@ -1,0 +1,22 @@
+{% extends 'Volleyball:ResourceBundle:base.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('/bundles/volleyballresource/css/Base/index.css') }}" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+    {{ block('breadcrumbs') }}
+    
+    {{ block('main_content') }}
+{% endblock %}
+
+{% block breadcrumbs %}
+        {% include 'VolleyballResourceBundle:Base:Breadcrumbs.html.twig' with { 'breadcrumbs': breadcrumbs } %}
+{% endblock %}
+
+{% block main_content %}{% endblock %}{# empty Twig template #}

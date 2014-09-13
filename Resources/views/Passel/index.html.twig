@@ -1,0 +1,33 @@
+{% extends 'Volleyball:ResourceBundle:Base/index.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('/bundles/volleyballresource/css/passel.css') }}" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+    {{ block('breadcrumbs') }}
+    
+    {{ block('main_content') }}
+{% endblock %}
+
+{% block breadcrumbs %}
+        {% include 'VolleyballResourceBundle:Base:Breadcrumbs.html.twig' with { 'breadcrumbs': breadcrumbs } %}
+{% endblock %}
+
+{% block main_content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8" id="left-pane">
+                {% include 'VolleyballResourceBundle:Base:datatable.html.twig' with { 'data': passels } %}
+            </div>
+            <div class="col-md-4" id="id-right">
+                {% include 'VolleyballResourceBundle:Base:quickform.html.twig' with { 'form': form } %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
