@@ -1,4 +1,4 @@
-{% extends 'Volleyball:ResourceBundle:base.html.twig' %}
+{% extends '::base.html.twig' %}
 
 {% block javascripts %}
     {{ parent() }}
@@ -7,18 +7,27 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.0-beta.1/css/jquery.dataTables.css">
     <link href="{{ asset('/bundles/volleyballresource/css/index.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.0-beta.1/css/jquery.dataTables.css">
+{% endblock %}
+
+{% block header %}
+    {{ block('menu') }}
+    {{ block('breadcrumbs') }}
 {% endblock %}
 
 {% block content %}
-    {{ block('breadcrumbs') }}
-    
-    {{ block('main_content') }}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8" id="left-pane">
+                {% block leftpane %}
+                    <h1>{% block title %}{{ 'Items' | title }}{% endblock %}</h1>
+                    {% include 'VolleyballResourceBundle:Datatable:index.html.twig' with { 'items' : items } %}
+                {% endblock %}
+            </div>
+            <div class="col-md-4" id="right-pane">
+                {% block rightpane %}{% endblock %}
+            </div>
+        </div>
+    </div>
 {% endblock %}
-
-{% block breadcrumbs %}
-        {% include 'VolleyballResourceBundle:Base:Breadcrumbs.html.twig' with { 'breadcrumbs': breadcrumbs } %}
-{% endblock %}
-
-{% block main_content %}{% endblock %}

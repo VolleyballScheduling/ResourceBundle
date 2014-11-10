@@ -1,3 +1,15 @@
-{% block main_content %}
-about.
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+    <link href="{{ asset('/bundles/Volleyballutility/css/homepage.css') }}" rel="stylesheet" />
+    {{ parent() }}
+{% endblock %}
+
+{% block content %}
+<div class="fluid-container">
+    <div class="row">
+        <h1>About Volleyball</h1>
+        The Volleyball Scheduling System was birthed from a handmade custom DOS based system decades ago and was revamped and revamped as technology advanced.  Now, mutated into an online multi-organization/ facility system that can be managed and deplayed from a central location and customized as needed.
+    </div>
+</div>
 {% endblock %}

@@ -1,0 +1,18 @@
+{% extends '::base.html.twig' %}
+{% block content %}
+    {% block buttons %}
+    <div class="btn-group btn-group-lg center-block">
+    {% for item in items %}
+        <a class="btn btn-large btn-default" href="{{ path(item.route) }}">
+            {{ item.icon | raw }}
+            <p>{{ item.label | title }}</p>
+        </a>
+    {% endfor %}
+    </div>
+    {% endblock %}
+    <div class="container">
+        <div class="row">
+            <p>{#{{ item.caption | capitalize}}#}</p>
+        </div>
+    </div>
+{% endblock %}

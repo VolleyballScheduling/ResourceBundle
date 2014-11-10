@@ -1,101 +1,97 @@
 {% extends '::base.html.twig' %}
 
 {% block stylesheets %}
-    <link href="{{ asset('/bundles/VolleyballResource/css/homepage.css') }}" rel="stylesheet" />
+    <link href="{{ asset('/bundles/Volleyballresource/css/index.css') }}" rel="stylesheet" />
+    <link href="{{ asset('/bundles/Volleyballresource/css/carousel.css') }}" rel="stylesheet" />
+    <link href="{{ asset('/bundles/Volleyballresource/css/homepage.css') }}" rel="stylesheet" />
     {{ parent() }}
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
-    <script src="{{ asset('/bundles/VolleyballResource/js/volleyball.js') }}" type="text/javascript" ></script>
 {% endblock %}
 
 {% block content %}
-<div class="container">
+<div class="fluid-container">
     <div class="row">
+        {% block signin %}
         <div class="col-md-4">
-            {{ block('signin') }}    
+            <br />
+            <br />
+            <br />
+            <h1>{{ 'sign in' | title }}</h1>
+            <div class="center-block">
+                <form action="{{ path("fos_user_security_check") }}" method="post">
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                    <p>
+                        <label for="username">{{ 'email address' | title }}</label>
+                        <input type="text" id="username" name="_username" value="{{ last_username }}" class="text-input" />
+                    </p>
+                    <p>
+                        <label for="password">{{ 'password' | title }}</label>
+                        <input type="password" id="password" name="_password" class="text-input" />
+                    </p>
+                    <p>
+                        <input type="checkbox" id="remember_me" name="_remember_me" value="on" class="pull-left"/>
+                        <label for="remember_me"> {{ 'remember me' | title }}</label>
+                        <input type="submit" id="_submit" name="_submit" value="sign in &raquo;" class="greenButton"/>
+                    </p>
+                </form>
+            </div>
         </div>
+        {% endblock %}
         {% block carousel %}
         <div class="col-md-8">
             {% include 'VolleyballResourceBundle:Carousel:carousel.html.twig' with { 'items': carousel.items } %}
         </div>
         {% endblock %}
     </div>
-    <div class="row">
-        {{ block('home_colmns') }}
+    <div class="row feature-row center-block">
+        {% block home_cols %}
+        <!-- Multi-FacilityInterface //-->
+        <div class="col-md-4">
+            <p>
+                <i class="fa fa-th fa-5x"></i>
+            </p>
+            <h2 class="font-thin">
+                Multi-Facility
+                <span class="font-semibold">Interface</span>
+            </h2>
+            <h4 class="font-thin">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            </h4>
+        </div>
+
+        <!-- Print Reports //-->
+        <div class="col-md-4">
+            <p>
+                <i class="fa fa-print fa-5x"></i>
+            </p>
+            <h2 class="font-thin">
+                Print
+                <span class="font-semibold">Reports</span>
+            </h2>
+            <h4 class="font-thin">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            </h4>
+        </div>
+
+        <!-- User Portals //-->
+        <div class="col-md-4">
+            <p>
+                <i class="fa fa-desktop fa-5x"></i>
+            </p>
+            <h2 class="font-thin">
+                User
+                <span class="font-semibold">Portals</span>
+            </h2>
+            <h4 class="font-thin">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            </h4>
+        </div>
+        {% endblock %}
     </div>
 </div>
 {% endblock %}
 
-{% block header %}
-    <div class="masthead clearfix">
-        <h1 class="pull-left">
-            <i class="icon-bookmark icon-large"></i><br />
-            <a href="{{ path( 'homepage') }}">{{ 'Volleyball Scheduling System' | title }}</a>
-        </h1>
-        {{ knp_menu_render('main') }}
-    </div>
-{% endblock %}
-
-{% block footer %}
-<div class="footer">
-    <div class="container">
-        <div class="row">
-            {{ knp_menu_render('main') }}
-        </div>
-    </div>
-</div>
-{% endblock %}
-
-{% block home_columns %}
-    <div class="col-md-12">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <i class="fa fa-3x fa-th pull-left"></i>
-                    <div class="content">
-                        <h2>Multi-Facility Interface</h2>
-                        <p>blah blah blah blah blah!</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <i class="fa fa-3x fa-print pull-left"></i>
-                    <div class="content">
-                        <h2>Point And Print Reports</h2>
-                        <p>blah blah blah blah blah!</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <i class="fa fa-3x fa-desktop pull-left"></i>
-                    <div class="content">
-                        <h2>User Portals</h2>
-                        <p>blah blah blah blah blah!</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-{% endblock %}
-
-{% block signin %}
-    <h1>{{ 'sign in' | title }}</h1>
-    <div class="center-block">
-        <form action="{{ path("fos_user_security_check") }}" method="post">
-            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-            <p>
-                <label for="username">{{ 'email address' | title }}</label>
-                <input type="text" id="username" name="_username" value="{{ last_username }}" class="text-input" />
-            </p>
-            <p>
-                <label for="password">{{ 'password' | title }}</label>
-                <input type="password" id="password" name="_password" class="text-input" />
-            </p>
-            <p>
-                <input type="checkbox" id="remember_me" name="_remember_me" value="on" class="pull-left"/>
-                <label for="remember_me"> {{ 'remember me' | title }}</label>
-                <input type="submit" id="_submit" name="_submit" value="sign in &raquo;" class="greenButton" class="pull-right"/>
-            </p>
-        </form>
-    </div>
-{% endblock %}
+{% block breadcrumbs %} {% endblock %}

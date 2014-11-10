@@ -1,21 +1,30 @@
-body {
-  padding-bottom: 40px;
-  color: #5a5a5a;
+.feature-row {
+    padding-top: 54px;
 }
 
-/* Columns */
-
-.home-columns {
-    margin-bottom: 20px;
+.feature-row p {
+    text-align: center;
 }
 
-.home-columns i {
-    font-size: 64px;
-    margin: 15px 20px 60px 0;
-    color: #CCC;
+.feature-row i {
+    display: inline-block;
+    margin: 0 auto;
+    max-height: 100%;
+    max-width: 100%;
 }
 
-.home-columns h2 {
-    color: #3B3B3B;
-    margin-bottom: 0;
+.feature-row h2 {
+    font-size: 28px;
+    padding-bottom: 40px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.feature-row h4 {
+    font-family: "Titillum Web", sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+}
+i {
+    font-size: 80px;
 }

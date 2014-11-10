@@ -1,0 +1,19 @@
+{% extends 'FOSUserBundle:Registration:register.html.twig' %}
+
+{% block stylesheets %}
+    <link href="{{ asset('/bundles/Volleyballresource/css/form.css') }}" rel="stylesheet" />
+    <link href="{{ asset('/bundles/Volleyballresource/css/register.form.css') }}" rel="stylesheet" />
+    {{ parent() }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block content %}
+<div class="fluid-container">
+    <div class="row">
+    {{ block('fos_user_content') }}
+    </div>
+</div>
+{% endblock %}

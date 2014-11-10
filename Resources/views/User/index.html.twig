@@ -1,0 +1,17 @@
+{% extends 'VolleyballResourceBundle:Base:index.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('/bundles/volleyballresource/css/user.css') }}" rel="stylesheet" />
+{% endblock %}
+
+{% block leftpane %}
+    {% include 'VolleyballResourceBundle:Base:form.html.twig' with { 'form': form } %}
+{% endblock %}
+
+{% block rightpane %}
+{% endblock %}

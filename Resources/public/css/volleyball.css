@@ -1,0 +1,32 @@
+div#menu {
+    min-height: 50px;
+}
+
+#breadcrumbs {
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 50px;
+    z-index: 1030;
+    min-height: 30px;
+    padding-left: 10px;
+    font-variant: small-caps;
+}
+
+#content {
+    margin-top: 50px;
+}
+
+.navbar {
+    font-variant: small-caps;
+}
+
+.font-thin {
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 200;
+}
+
+.font-semibold {
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 600;
+}

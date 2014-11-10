@@ -1,0 +1,8 @@
+{% extends 'VolleyballResourceBundle:Base:index.html.twig' %}
+ 
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('/bundles/volleyballresource/css/attendee.css') }}" rel="stylesheet" />
+{% endblock %}
+
+{% block title %}{{ 'attendees' | title }}{% endblock %}
