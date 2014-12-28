@@ -1,4 +1,13 @@
-span.not-enrolled {
-  color: #eae1be;
-  font-style: italic;
+.widget {
+    max-width: 30% !important;
+    float: left;
+    margin: 15px;
+}
+
+.widget_title > p {
+    float: left;
+}
+
+.widget_title > span.controls {
+    float: right;
 }

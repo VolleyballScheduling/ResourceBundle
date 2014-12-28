@@ -1,28 +1,36 @@
 <div id="myCarousel" class="carousel slide">
-    {{ block('indicator') }}
     <div class="carousel-inner">
         {% for i in items %}
             {{ _self.item(i, loop.first) }}
         {% endfor %}
     </div>
-    {{ block('controls') }}
-</div>
-
-{% block indicators %}
+    {% block indicators %}
     <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
+        {% for i in items %}
+            {{ _self.item(i, loop.first, true, loop.index0) }}
+        {% endfor %}
     </ol>
 {% endblock %}
+    {% block controls %}
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+        <span class="icon-prev"></span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+        <span class="icon-next"></span>
+    </a>
+    {% endblock %}
+</div>
 
-{% macro item(item, active) %}
+{% macro item(item, active, indicator = false, itteration = null) %}
     {% if active == true %}
         {% set active = 'active' %}
     {% else %}
         {% set active = '' %}
     {% endif %}
     
+    {% if indicator %}
+        <li data-target="#myCarousel" data-slide-to="{{ itteration }}" class="{{ active }}"></li>
+    {% else %}
     <div class="item {{ active|default('') }}">
       <img src="{{ item.image }}" class="img-responsive" alt='{{ item.name }}'>
       <div class="container">
@@ -32,13 +40,6 @@
         </div>
       </div>
     </div>
+    {% endif %}
 {% endmacro %}
 
-{% block controls %}
-    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-        <span class="icon-prev"></span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" data-slide="next">
-        <span class="icon-next"></span>
-    </a>
-{% endblock %}

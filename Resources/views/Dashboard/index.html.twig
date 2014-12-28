@@ -1,0 +1,28 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('/bundles/volleyballresource/css/dashboard.css')}}" rel="stylesheet" />
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        {% for widget in widgets %}
+            {% if widget.template is not null %}
+                {% include widget.template with { 'widget': widget } %}
+            {% else %}
+                {% include 'VolleyballResourceBundle:Widget:widget.html.twig' with { 'widget': widget } %}
+            {% endif %}
+        {% else %}
+            <div class="content_box">
+                <p>{{ 'no dashboard widgets found.' | title }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

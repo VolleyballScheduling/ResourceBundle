@@ -1,10 +1,11 @@
 {% extends '::base.html.twig' %}
 
 {% block stylesheets %}
-    <link href="{{ asset('/bundles/Volleyballresource/css/index.css') }}" rel="stylesheet" />
-    <link href="{{ asset('/bundles/Volleyballresource/css/carousel.css') }}" rel="stylesheet" />
-    <link href="{{ asset('/bundles/Volleyballresource/css/homepage.css') }}" rel="stylesheet" />
     {{ parent() }}
+    <link href="{{ asset('/bundles/volleyballresource/css/index.css') }}" rel="stylesheet" />
+    <link href="{{ asset('/bundles/volleyballresource/css/carousel.css') }}" rel="stylesheet" />
+    <link href="{{ asset('/bundles/volleyballresource/css/homepage.css') }}" rel="stylesheet" />
+    <link href="{{ asset('/bundles/volleyballresource/css/auth.css') }}" rel="stylesheet" />
 {% endblock %}
 
 {% block javascripts %}
@@ -12,36 +13,21 @@
 {% endblock %}
 
 {% block content %}
-<div class="fluid-container">
+<div class="container-fluid">
     <div class="row">
         {% block signin %}
-        <div class="col-md-4">
-            <br />
-            <br />
-            <br />
-            <h1>{{ 'sign in' | title }}</h1>
-            <div class="center-block">
-                <form action="{{ path("fos_user_security_check") }}" method="post">
-                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-                    <p>
-                        <label for="username">{{ 'email address' | title }}</label>
-                        <input type="text" id="username" name="_username" value="{{ last_username }}" class="text-input" />
-                    </p>
-                    <p>
-                        <label for="password">{{ 'password' | title }}</label>
-                        <input type="password" id="password" name="_password" class="text-input" />
-                    </p>
-                    <p>
-                        <input type="checkbox" id="remember_me" name="_remember_me" value="on" class="pull-left"/>
-                        <label for="remember_me"> {{ 'remember me' | title }}</label>
-                        <input type="submit" id="_submit" name="_submit" value="sign in &raquo;" class="greenButton"/>
-                    </p>
-                </form>
+        <div class="col-md-4" id="left-pane">
+            <div class="content_box">
+                <div class="login_form homepage" id="login-form">
+                <h2>{{ 'sign in' | title }}</h2>
+                <br />
+                {% include 'VolleyballResourceBundle:Form:login.form.html.twig' %}
+                </div>
             </div>
         </div>
         {% endblock %}
         {% block carousel %}
-        <div class="col-md-8">
+        <div class="col-md-8" id="right-pane">
             {% include 'VolleyballResourceBundle:Carousel:carousel.html.twig' with { 'items': carousel.items } %}
         </div>
         {% endblock %}

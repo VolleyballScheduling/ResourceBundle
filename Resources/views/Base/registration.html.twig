@@ -1,15 +1,25 @@
 {% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('/bundles/volleyballresource/css/auth.css') }}" />
+{% endblock %}
+    
 {% block content %}
-    {% block buttons %}
-    <div class="btn-group btn-group-lg center-block">
-    {% for item in items %}
-        <a class="btn btn-large btn-default" href="{{ path(item.route) }}">
-            {{ item.icon | raw }}
-            <p>{{ item.label | title }}</p>
-        </a>
-    {% endfor %}
+    <div class="content_box" id="splash">
+        <h2>{{ 'sign up' | title }}</h2>
+        <br />
+        {% block buttons %}
+        <div class="btn-group btn-group-lg center-block">
+        {% for item in items %}
+            <a class="btn btn-large btn-default" href="{{ path(item.route) }}">
+                {{ item.icon | raw }}
+                <p>{{ item.label | title }}</p>
+            </a>
+        {% endfor %}
+        </div>
+        {% endblock %}
     </div>
-    {% endblock %}
     <div class="container">
         <div class="row">
             <p>{#{{ item.caption | capitalize}}#}</p>

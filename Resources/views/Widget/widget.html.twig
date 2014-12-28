@@ -1,0 +1,23 @@
+{% block widget %}
+    <div class="widget container">
+        <div class="row">
+            <div class="col-md-12 widget_title">
+                <p>{% block widget_label %}{{ widget.label | title }}{% endblock %}</p>
+                <span class="controls">
+                    <i class="fa fa-minus-square"></i>
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="widget_content">
+                {% block widget_content %}
+                {% if widget.controller is not empty %}
+                    {{ render(controller(widget.controller)) }}
+                {% elseif widget.content is not empty %}
+                    {{ widget.content }}
+                {% endif %}                    
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

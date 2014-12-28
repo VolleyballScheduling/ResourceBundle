@@ -1,0 +1,9 @@
+    {% form_theme form 'VolleyballResourceBundle:Form:fields.html.twig' %}
+    <form action="{{ path('contact') }}" {{ form_enctype(form) }} method="POST" class="form">
+        {{ form_widget(form) }}
+        <div class="contact_control">
+            <button class="contact_btn" type="submit" id="_submit" name="_submit">
+                <i class="fa fa-envelope"></i>
+            </button>
+        </div>
+    </form>

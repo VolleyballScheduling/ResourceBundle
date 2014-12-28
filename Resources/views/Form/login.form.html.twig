@@ -1,0 +1,31 @@
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+    <form action="{{ path("fos_user_security_check") }}" method="post" role="form">
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+    <div class="form-group">
+        <label for="username">{{ 'email address' | title }}</label>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+            <input type="text" id="username" name="_username" value="{{ last_username }}" class="text-input username form-control" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="password">{{ 'password' | title }}</label>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+            <input type="password" id="password" name="_password" class="text-input password form-control" />
+        </div>
+    </div>
+    <div class="form-group remember">
+        <label class="checkbox">
+            <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+            Remember Me
+        </label>
+    </div>
+    <div class="login_control">
+        <button class="login_btn" type="submit" id="_submit" name="_submit">
+            <i class="fa fa-lock"></i>
+        </button>
+    </div>
+    </form>
